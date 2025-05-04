@@ -1,142 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PhasedGapple Unban Countdown</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: radial-gradient(#003366, #000000);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .ban-box-container {
-      perspective: 1000px;
-    }
-
-    .ban-box {
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 15px;
-      padding: 40px;
-      width: 90%;
-      max-width: 500px;
-      text-align: center;
-      box-shadow: 0 0 25px #ff0000;
-      cursor: pointer;
-      transform-style: preserve-3d;
-      transition: transform 1s;
-      transform: rotateY(180deg); /* Start with the back side */
-    }
-
-    .ban-box.flipped {
-      transform: rotateY(0deg); /* Flip to front */
-    }
-
-    .ban-box .front, .ban-box .back {
-      backface-visibility: hidden;
-    }
-
-    .front {
-      display: block;
-    }
-
-    .back {
-      display: none;
-      transform: rotateY(180deg);
-      color: #ff4444;
-    }
-
-    .ban-box h1 {
-      color: #ff4444;
-      font-size: 1.8em;
-      margin-bottom: 20px;
-    }
-
-    .ban-box p {
-      font-size: 1em;
-      margin: 10px 0;
-    }
-
-    .reason {
-      font-weight: bold;
-      color: #ffa500;
-    }
-
-    .timer {
-      font-size: 1.5em;
-      color: #00ffcc;
-      margin-top: 15px;
-    }
-
-    .continue-btn {
-      display: inline-block;
-      background-color: #3399ff;
-      color: white;
-      font-weight: bold;
-      padding: 10px 20px;
-      border-radius: 5px;
-      margin-top: 25px;
-      text-decoration: none;
-    }
-
-  </style>
-</head>
-<body>
-
-  <div class="ban-box-container">
-    <div class="ban-box" onclick="flipBox()">
-      <div class="front">
-        <h1>This account has been banned.</h1>
-        <p>Due to recent actions on your account, you have been banned for:</p>
-        <p class="reason">Exploiting</p>
-        <p>Ban Length:</p>
-        <div class="timer" id="timer">Calculating...</div>
-        <p style="font-style: italic;">
-          This temporary ban may precede a permanent ban depending<br> on severity of the prohibited activity.
-        </p>
-        <a class="continue-btn" href="#">CONTINUE</a>
-      </div>
-        <h1 class="back">PhasedGapple Fortnite Ban Info</h1>
-        <p class="back">For more details, please check the official rules and terms of service.</p>
-        <p class="back" style="font-style: italic;">The account has been banned for violating community guidelines.</p>
-    </div>
-  </div>
-
-  <script>
-    const unbanDate = new Date("2025-07-18T00:00:00Z").getTime();
-
-    function updateTimer() {
-      const now = new Date().getTime();
-      const distance = unbanDate - now;
-
-      if (distance <= 0) {
-        document.getElementById("timer").textContent = "You're Unbanned!";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("timer").textContent = 
-        `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    updateTimer();
-    setInterval(updateTimer, 1000);
-
-    function flipBox() {
-      const box = document.querySelector('.ban-box');
-      box.classList.toggle('flipped');
-    }
-  </script>
-
-</body>
-</html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <title>PhasedGapple Unban Countdown</title>
+   <style>
+     body {
+       margin: 0;
+       padding: 0;
+       background: radial-gradient(#003366, #000000);
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       color: white;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh;
+     }
+ 
+     .ban-box-container {
+       perspective: 1000px;
+     }
+ 
+     .ban-box {
+       background: rgba(0, 0, 0, 0.7);
+       border-radius: 15px;
+       padding: 40px;
+       width: 90%;
+       max-width: 500px;
+       text-align: center;
+       box-shadow: 0 0 25px #ff0000;
+       cursor: pointer;
+       transform-style: preserve-3d;
+       transition: transform 1s;
+       transform: rotateY(180deg); /* Start with the back side */
+     }
+ 
+     .ban-box.flipped {
+       transform: rotateY(0deg); /* Flip to front */
+     }
+ 
+     .ban-box .front, .ban-box .back {
+       backface-visibility: hidden;
+     }
+ 
+     .front {
+       display: block;
+     }
+ 
+     .back {
+       display: none;
+       transform: rotateY(180deg);
+       color: #ff4444;
+     }
+ 
+     .ban-box h1 {
+       color: #ff4444;
+       font-size: 1.8em;
+       margin-bottom: 20px;
+     }
+ 
+     .ban-box p {
+       font-size: 1em;
+       margin: 10px 0;
+     }
+ 
+     .reason {
+       font-weight: bold;
+       color: #ffa500;
+     }
+ 
+     .timer {
+       font-size: 1.5em;
+       color: #00ffcc;
+       margin-top: 15px;
+     }
+ 
+     .continue-btn {
+       display: inline-block;
+       background-color: #3399ff;
+       color: white;
+       font-weight: bold;
+       padding: 10px 20px;
+       border-radius: 5px;
+       margin-top: 25px;
+       text-decoration: none;
+     }
+ 
+   </style>
+ </head>
+ <body>
+ 
+   <div class="ban-box-container">
+     <div class="ban-box" onclick="flipBox()">
+       <div class="front">
+         <h1>This account has been banned.</h1>
+         <p>Due to recent actions on your account, you have been banned for:</p>
+         <p class="reason">Exploiting</p>
+         <p>Ban Length:</p>
+         <div class="timer" id="timer">Calculating...</div>
+         <p style="font-style: italic;">
+           This temporary ban may precede a permanent ban depending<br> on severity of the prohibited activity.
+         </p>
+         <a class="continue-btn" href="#">CONTINUE</a>
+       </div>
+       <div class="back">
+         <h1>PhasedGapple Fortnite Ban Info</h1>
+         <p>For more details, please check the official rules and terms of service.</p>
+         <p style="font-style: italic;">The account has been banned for violating community guidelines.</p>
+       </div>
+     </div>
+   </div>
+ 
+   <script>
+     const unbanDate = new Date("2025-07-18T00:00:00Z").getTime();
+ 
+     function updateTimer() {
+       const now = new Date().getTime();
+       const distance = unbanDate - now;
+ 
+       if (distance <= 0) {
+         document.getElementById("timer").textContent = "You're Unbanned!";
+         return;
+       }
+ 
+       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+ 
+       document.getElementById("timer").textContent = 
+         `${days}d ${hours}h ${minutes}m ${seconds}s`;
+     }
+ 
+     updateTimer();
+     setInterval(updateTimer, 1000);
+ 
+     function flipBox() {
+       const box = document.querySelector('.ban-box');
+       box.classList.toggle('flipped');
+     }
+   </script>
+ 
+ </body>
+ </html>
